@@ -119,18 +119,12 @@ class Chalesh():
         return
 
     def callback_func(self, bot, update):
-        # print("-"*40)
-        # print("new_chat_members","\nupdate._effective_message",update._effective_message,"\nupdate.update_id",update.update_id,
-        #       "\nupdate.message.message_id", update.message.message_id,"\nupdate.message.text",update.message.text)
-        # # here you receive a list of new members (User Objects) in a single service message
-        # new_members = update.message.new_chat_membersp
+        
         print("Effective message:",update._effective_message)
         print ("Start callback_func Joinning Message")
         bot.delete_message(chat_id=update._effective_message.chat_id, message_id=update._effective_message.message_id)
         print(update._effective_message.message_id, " removed")
-        # do your stuff here:
-        # for member in new_members:
-        #     print(member.username)
+        
         return
 
 
@@ -147,7 +141,6 @@ class Chalesh():
     def buttonsDriven(self,bot,update):
         button = update.callback_query
         if button=='time':
-            # if self.operation=="setTime":
             bot.send_message("زمان شروع را وارد کنید",chat_id=update.message.chat_id, reply_markup=self.inlineSaveTimeKey)
         if button=='save time':
             startText=update.message.text
@@ -165,7 +158,6 @@ class Chalesh():
                              reply_markup=self.inLineSaveDurationKey)
         if button=='save duration':
             if button == 'save time':
-            # if self.operation == "setPeriod":
                 periodText = update.message.text
                 try:
                     self.period = int(periodText)
@@ -183,7 +175,6 @@ class Chalesh():
         return
 
     def registerText(self,bot,update):
-        # print(update.message.from_user)
         removeIdsArray = self.register(update.message.message_id,
                       update.message.chat_id,
                       update.message.from_user['id'],"Text")
@@ -229,8 +220,6 @@ class Chalesh():
                 except Exception as e:
                     print(e)
                     continue
-            #removeIdsArray = collection.delete_many({"chat_id": })  # .map(function(doc) {return doc._id;}); # Pull out just the _ids
-
 
         except Exception as e:
             print (e)
@@ -350,8 +339,8 @@ class Chalesh():
 if __name__=="__main__":
     log=open("log.txt","a")
     dotenv.load_dotenv()
-    user = os.getenv('user')       #dotenv.dotenv_values()['username']
-    password = os.getenv('password')   #dotenv.dotenv_values()['password']
+    user = os.getenv('user')       
+    password = os.getenv('password')   
 
     cluster = MongoClient(f"mongodb+srv://{user}:{password}@cluster0-j47c5.gcp.mongodb.net/test?retryWrites=true&w=majority")
     print(cluster)
