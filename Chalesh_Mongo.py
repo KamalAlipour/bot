@@ -44,14 +44,7 @@ class Chalesh():
         if chat_id!= self.chaleshID:
             return None
         print("message_id:",message_id," chat_id:",chat_id," user_id:",user_id, " Type:", type)
-        # time_in_datetime = datetime.strptime(time_in_string, "%d-%m-%Y %H:%M:%S")
-        # print("From user:", update.message.from_user)
-        # print("Message ID:", update.message.message_id)
-        # print("Chat ID:", update.message.chat_id)
-        # self.message_id = update.message.message_id
-        # self.chat_id = update.message.chat_id
-        # self.user_id = update.message.from_user['id']
-        # print(message.items())
+        
         message = {"_id": message_id,
                    "chat_id": chat_id,
                    "user_id": user_id,
