@@ -22,7 +22,7 @@ class Chalesh():
 
         self.mindel, self.delNumber = 10, 10
         self.maxMessages = 1000
-        self.chaleshID = -1001067271153
+        self.chaleshID = os.getenv('chaleshID')
         self.duration=10
 
         self.clean = {
